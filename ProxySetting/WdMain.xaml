@@ -1,0 +1,23 @@
+﻿<Window x:Class="ProxySetting.WdMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProxySetting"
+        mc:Ignorable="d"
+        Title="ProxySetting" Height="80" Width="250" MinWidth="250" MinHeight="80" Loaded="Window_Loaded" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <UniformGrid Rows="2" Columns="2">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock x:Name="TbIsUseingProxy" HorizontalAlignment="Center" VerticalAlignment="Center" Text="未启用代理"></TextBlock>
+            </StackPanel>
+
+            <Button x:Name="BtnStartProxy" Content="开启/关闭代理" Click="BtnStartProxy_Click"></Button>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="是否置顶 "></TextBlock>
+                <CheckBox x:Name="CkbIsTopMost" Click="CkbIsTopMost_Click"></CheckBox>
+            </StackPanel>
+            <Button x:Name="BtnChangeProxy" Content="切换代理" Click="BtnChangeProxy_Click"/>
+        </UniformGrid>
+    </Grid>
+</Window>

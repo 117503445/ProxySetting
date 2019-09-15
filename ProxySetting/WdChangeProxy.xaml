@@ -1,0 +1,21 @@
+﻿<Window x:Class="ProxySetting.WdChangeProxy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProxySetting"
+        mc:Ignorable="d"
+        Title="WdChangeProxy" Height="450" Width="800" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtnEdit" Margin="10" Width="100" Click="BtnEdit_Click">编辑</Button>
+            <Button x:Name="BtnLoad" Margin="10" Width="100" Click="BtnLoad_Click">加载</Button>
+            <TextBlock x:Name="TbInfo" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <ListBox Grid.Row="1" x:Name="LstProxys" Margin="10" SelectionChanged="LstProxys_SelectionChanged" Grid.RowSpan="2"></ListBox>
+    </Grid>
+</Window>
