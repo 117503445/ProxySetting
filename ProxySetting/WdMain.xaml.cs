@@ -24,6 +24,10 @@ namespace ProxySetting
         public WdMain()
         {
             InitializeComponent();
+            Title += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+#if DEBUG
+            Title += " DEBUG";
+#endif
             DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             timer.Tick += Timer_Tick;
         }
