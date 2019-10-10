@@ -17,7 +17,7 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="是否置顶 "></TextBlock>
                 <CheckBox x:Name="CkbIsTopMost" Click="CkbIsTopMost_Click"></CheckBox>
             </StackPanel>
-            <Button x:Name="BtnChangeProxy" Content="切换代理" Click="BtnChangeProxy_Click"/>
+            <Button x:Name="BtnChangeProxy" Content="切换手动代理" Click="BtnChangeProxy_Click"/>
         </UniformGrid>
     </Grid>
 </Window>

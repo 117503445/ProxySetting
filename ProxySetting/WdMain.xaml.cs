@@ -21,6 +21,7 @@ namespace ProxySetting
     /// </summary>
     public partial class WdMain : Window
     {
+
         public WdMain()
         {
             InitializeComponent();
@@ -30,19 +31,22 @@ namespace ProxySetting
 #endif
             DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             timer.Tick += Timer_Tick;
+            Console.WriteLine(Proxy.GetPAC());
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            bool isUseingProxy = Proxy.UsedProxy();
-            if (isUseingProxy)
+            if (Proxy.UsedManualProxy())
             {
-                string s = Proxy.GetProxyProxyServer();
-                TbIsUseingProxy.Text = s;
+                TbIsUseingProxy.Text = $"全局 {Proxy.GetProxyProxyServer()}";
+            }
+            else if (!string.IsNullOrEmpty(Proxy.GetPAC()))
+            {
+#pragma warning disable CA1303 // 请不要将文本作为本地化参数传递
+                TbIsUseingProxy.Text = "PAC MODE";
             }
             else
             {
-#pragma warning disable CA1303 // 请不要将文本作为本地化参数传递
                 TbIsUseingProxy.Text = "未启用代理";
 #pragma warning restore CA1303 // 请不要将文本作为本地化参数传递
             }
@@ -50,7 +54,7 @@ namespace ProxySetting
 
         private void BtnStartProxy_Click(object sender, RoutedEventArgs e)
         {
-            if (Proxy.UsedProxy())
+            if (Proxy.UsedManualProxy())
             {
                 Proxy.UnsetProxy();
             }

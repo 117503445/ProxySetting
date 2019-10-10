@@ -162,7 +162,7 @@ namespace ProxySetting
         }
 
         //判断是否使用代理
-        public static bool UsedProxy()
+        public static bool UsedManualProxy()
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Internet Settings", true);
             if (rk.GetValue("ProxyEnable").ToString() == "1")
@@ -180,10 +180,32 @@ namespace ProxySetting
         public static string GetProxyProxyServer()
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Internet Settings", true);
-            string ProxyServer = rk.GetValue("ProxyServer").ToString();
-            rk.Close();
-            return ProxyServer;
+            if (rk.GetValue("ProxyServer") is string ProxyServer)
+            {
+                rk.Close();
+                return ProxyServer;
+            }
+            else
+            {
+                rk.Close();
+                return "";
+            }
+        }
 
+        //获得代理脚本,若没设置则返回""
+        public static string GetPAC()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Internet Settings", true);
+            if (rk.GetValue("AutoConfigURL") is string ProxyServer)
+            {
+                rk.Close();
+                return ProxyServer;
+            }
+            else
+            {
+                rk.Close();
+                return "";
+            }
         }
     }
 }
